@@ -1,669 +1,140 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Pel di Carota Macerato Bianco — WOW RANGE · Enoteca Squillari</title>
-
-<!-- Cormorant Garamond + Raleway — font premium originale WOW RANGE -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Raleway:wght@200;300;400;600;700&display=swap" rel="stylesheet">
-
-<style>
-/* =====================================================
-   WOW RANGE — Premium Local HTML Stylesheet
-   Palette: carta naturale, nero caldo, oro opaco, bordeaux.
-   Font: Cormorant Garamond (serif) + Raleway (sans)
-   Recuperato da wow-range.css legacy — Enoteca Squillari
-   ===================================================== */
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-:root {
-  /* ── Palette legacy premium ── */
-  --paper:         #F0EBE0;
-  --paper-dark:    #E8E1D4;
-  --ink:           #1E1912;
-  --stone:         #7A7060;
-  --dust:          #B0A590;
-  --gold:          #9E8A5C;
-  --gold-light:    #C4AC7A;
-
-  /* ── Alias compatibilità nuovi template ── */
-  --avorio:        #FBF7EE;
-  --crema:         #F2E8D8;
-  --nero:          #1A120D;
-  --nero-soft:     #2B211A;
-  --oro:           #B89446;
-  --oro-soft:      #D9C28A;
-  --bordeaux:      #6F1D34;
-  --bordeaux-soft: #8E3B4F;
-  --grigio:        #6C5D50;
-  --linea:         rgba(184, 148, 70, .34);
-  --ombra:         0 18px 48px rgba(45, 31, 22, .10);
-
-  /* ── Font stack premium ── */
-  --font-h: 'Cormorant Garamond', 'Playfair Display', 'Palatino Linotype', Georgia, serif;
-  --font-b: 'Raleway', Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-}
-
-html { background: var(--crema); }
-body {
-  color: var(--nero);
-  font-family: var(--font-b);
-  font-size: 14px;
-  line-height: 1.55;
-  letter-spacing: 0;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-
-.oro { color: var(--oro); }
-.bordeaux { color: var(--bordeaux); }
-.italic { font-style: italic; }
-
-.divider {
-  border: 0;
-  border-top: 1px solid var(--linea);
-  margin: 24px 0;
-}
-
-.divider-oro {
-  border: 0;
-  border-top: 1px solid var(--oro);
-  margin: 18px 0;
-}
-
-.logo-placeholder {
-  display: inline-flex;
-  align-items: center;
-  min-height: 34px;
-  border: 1px solid var(--linea);
-  color: var(--oro);
-  font-family: var(--font-h);
-  font-size: 12px;
-  letter-spacing: .24em;
-  padding: 5px 14px;
-  text-transform: uppercase;
-}
-
-.qr-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-}
-
-.qr-box {
-  width: 132px;
-  height: 132px;
-  border: 2px solid var(--nero);
-  background:
-    linear-gradient(90deg, transparent 47%, rgba(26,18,13,.72) 47% 53%, transparent 53%),
-    linear-gradient(0deg, transparent 47%, rgba(26,18,13,.72) 47% 53%, transparent 53%),
-    repeating-linear-gradient(45deg, rgba(26,18,13,.95) 0 4px, transparent 4px 9px),
-    var(--avorio);
-  box-shadow: 0 0 0 8px var(--avorio), 0 10px 26px rgba(26, 18, 13, .15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  flex-shrink: 0;
-}
-
-.qr-box::before,
-.qr-box::after {
-  content: '';
-  position: absolute;
-  width: 31px;
-  height: 31px;
-  border: 7px solid var(--nero);
-  background: var(--avorio);
-}
-
-.qr-box::before { top: 10px; left: 10px; }
-.qr-box::after { right: 10px; bottom: 10px; }
-
-.qr-center {
-  width: 32px;
-  height: 32px;
-  background: var(--nero);
-  border: 6px solid var(--avorio);
-  box-shadow: 0 0 0 2px var(--nero);
-  z-index: 1;
-}
-
-.qr-label {
-  color: var(--nero);
-  font-family: var(--font-b);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: .16em;
-  line-height: 1.2;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-.qr-sublabel {
-  color: var(--grigio);
-  font-size: 9px;
-  line-height: 1.25;
-  margin-top: -5px;
-  text-align: center;
-}
-
-@media print {
-  html, body {
-    background: white !important;
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
-  }
-
-  body { margin: 0; }
-
-  a { color: inherit; text-decoration: none; }
-}
-
-/* ─────────────────────────────────────────────────────────────────
-   WINE CARD COMPONENTS
-   Mobile-first · Luxury editorial
-   Usati da wine_card_template.html e wine_cards/index.html
-───────────────────────────────────────────────────────────────── */
-
-/* Hero immersivo — sfondo CSS gradient, nessuna immagine esterna */
-.wine-hero {
-  min-height: 52vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 40px 28px 32px;
-  position: relative;
-  overflow: hidden;
-}
-
-.wine-hero-eyebrow {
-  color: var(--oro-soft);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: .3em;
-  margin-bottom: 14px;
-  text-transform: uppercase;
-}
-
-.wine-hero-title {
-  color: var(--avorio);
-  font-family: var(--font-h);
-  font-size: clamp(32px, 8vw, 52px);
-  font-weight: 600;
-  line-height: .96;
-  margin-bottom: 12px;
-}
-
-.wine-hero-producer {
-  color: rgba(251,247,238,.62);
-  font-size: 13px;
-  letter-spacing: .08em;
-  margin-bottom: 18px;
-}
-
-.wine-hero-badge {
-  align-items: center;
-  background: rgba(251,247,238,.1);
-  border: 1px solid var(--oro);
-  color: var(--oro-soft);
-  display: inline-flex;
-  font-size: 22px;
-  font-family: var(--font-h);
-  font-weight: 600;
-  letter-spacing: .01em;
-  padding: 8px 18px;
-  width: fit-content;
-}
-
-/* Sezione storia — testo editoriale */
-.wine-story {
-  padding: 32px 28px;
-  border-bottom: 1px solid var(--linea);
-}
-
-.wine-story-label {
-  color: var(--bordeaux);
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: .28em;
-  margin-bottom: 14px;
-  text-transform: uppercase;
-}
-
-.wine-story-text {
-  color: var(--nero-soft);
-  font-family: var(--font-h);
-  font-size: 18px;
-  font-style: italic;
-  line-height: 1.55;
-}
-
-/* Sezione abbinamenti */
-.wine-pairing {
-  padding: 28px 28px;
-  border-bottom: 1px solid var(--linea);
-}
-
-.wine-pairing-label {
-  color: var(--bordeaux);
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: .28em;
-  margin-bottom: 16px;
-  text-transform: uppercase;
-}
-
-.wine-pairing-item {
-  align-items: center;
-  border-bottom: 1px solid var(--linea);
-  color: var(--nero);
-  display: flex;
-  font-size: 14px;
-  gap: 14px;
-  padding: 13px 0;
-}
-
-.wine-pairing-item:last-child { border-bottom: 0; }
-
-.wine-pairing-dot {
-  background: var(--oro);
-  border-radius: 50%;
-  flex-shrink: 0;
-  height: 6px;
-  width: 6px;
-}
-
-/* Sezione QR voto */
-.wine-qr {
-  align-items: center;
-  background: var(--nero);
-  display: grid;
-  gap: 24px;
-  grid-template-columns: auto 1fr;
-  padding: 28px;
-}
-
-.wine-qr-headline {
-  color: var(--oro-soft);
-  font-family: var(--font-h);
-  font-size: 22px;
-  font-weight: 600;
-  line-height: 1.1;
-  margin-bottom: 8px;
-}
-
-.wine-qr-sub {
-  color: rgba(251,247,238,.7);
-  font-size: 13px;
-  line-height: 1.5;
-}
-
-/* CTA area — link di navigazione */
-.wine-cta {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 28px;
-}
-
-.wine-cta-btn {
-  align-items: center;
-  border: 1px solid var(--linea);
-  color: var(--nero);
-  display: flex;
-  font-size: 14px;
-  font-weight: 600;
-  justify-content: space-between;
-  padding: 16px 20px;
-  text-decoration: none;
-}
-
-.wine-cta-btn:hover {
-  background: var(--crema);
-  border-color: var(--oro);
-}
-
-.wine-cta-btn.primary {
-  background: var(--bordeaux);
-  border-color: var(--bordeaux);
-  color: var(--avorio);
-}
-
-.wine-cta-btn.primary:hover { background: #8E3B4F; }
-
-/* Quick info chips */
-.wine-quickinfo {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 22px 28px;
-  border-bottom: 1px solid var(--linea);
-}
-
-.wine-chip {
-  background: var(--crema);
-  border: 1px solid var(--linea);
-  border-radius: 2px;
-  color: var(--nero);
-  font-size: 12px;
-  padding: 7px 12px;
-}
-
-.wine-chip strong {
-  color: var(--bordeaux);
-  display: block;
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: .2em;
-  margin-bottom: 3px;
-  text-transform: uppercase;
-}
-
-/* Music mood */
-.wine-music {
-  align-items: center;
-  border-bottom: 1px solid var(--linea);
-  display: flex;
-  gap: 14px;
-  padding: 20px 28px;
-}
-
-.wine-music-icon {
-  color: var(--oro);
-  font-size: 20px;
-  flex-shrink: 0;
-}
-
-.wine-music-text {
-  color: var(--grigio);
-  font-size: 13px;
-  font-style: italic;
-  line-height: 1.45;
-}
-
-/* WOW RANGE section inside wine card */
-.wine-wow-section {
-  background: var(--crema);
-  border-top: 2px solid var(--oro);
-  border-bottom: 2px solid var(--oro);
-  padding: 24px 28px;
-}
-
-.wine-wow-tagline {
-  color: var(--bordeaux);
-  font-family: var(--font-h);
-  font-size: 20px;
-  font-style: italic;
-  margin-bottom: 8px;
-}
-
-.wine-wow-desc {
-  color: var(--grigio);
-  font-size: 13px;
-  line-height: 1.55;
-}
-
-
-
-/* ── Wine Card Layout ────────────────────────────────────────────────
-   Mobile-first · max-width 520px · premium editoriale
-   Stile recuperato da wow-range.css (Cormorant Garamond + Raleway)
-   Palette: carta naturale, oro opaco, nero caldo
-
-   Per cambiare font     → modifica :root --font-h / --font-b in base.css
-   Per cambiare palette  → modifica :root in base.css
-   Per rigenerare        → POST /api/hermes/wow-campaign-render-wine-cards
-─────────────────────────────────────────────────────────────────── */
-
-html { background: var(--paper-dark); }
-
-body {
-  background: var(--paper-dark);
-  max-width: 520px;
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* ── Sticky top bar ── */
-.top-bar {
-  align-items: center;
-  background: var(--paper);
-  border-bottom: 1px solid rgba(158,138,92,.28);
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 20px;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-.top-bar-back {
-  align-items: center;
-  color: var(--gold);
-  display: flex;
-  font-family: var(--font-b);
-  font-size: 11px;
-  font-weight: 600;
-  gap: 6px;
-  letter-spacing: .12em;
-  text-decoration: none;
-  text-transform: uppercase;
-}
-
-.top-bar-campaign {
-  color: var(--stone);
-  font-family: var(--font-b);
-  font-size: 10px;
-  font-weight: 300;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-}
-
-/* ── Hero carta naturale ── */
-.wine-hero {
-  background: var(--paper);
-  border-bottom: 1px solid rgba(158,138,92,.22);
-  padding: 32px 28px 24px;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Watermark debossato */
-.wine-hero::before {
-  content: 'WOW RANGE';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: var(--font-h);
-  font-weight: 300;
-  font-size: clamp(28px, 12vw, 52px);
-  letter-spacing: .32em;
-  text-transform: uppercase;
-  color: transparent;
-  -webkit-text-stroke: 0.5px rgba(140,115,65,.10);
-  text-shadow:
-    0.8px 1.2px 0 rgba(255,248,225,.50),
-    -0.4px -0.5px 0 rgba(80,60,20,.06);
-  pointer-events: none;
-  white-space: nowrap;
-  z-index: 0;
-}
-
-.wine-hero-inner {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: 130px 1fr;
-  gap: 20px;
-  align-items: flex-end;
-  min-height: 220px;
-}
-
-/* ── Immagine bottiglia ── */
-.wine-bottle-col {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  height: 100%;
-}
-
-.wine-bottle-img {
-  max-height: 200px;
-  max-width: 110px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  filter: drop-shadow(2px 8px 16px rgba(30,20,5,.18));
-}
-
-/* Fallback gradient quando non c'è PNG reale */
-.wine-bottle-gradient {
-  width: 72px;
-  height: 180px;
-  background: linear-gradient(160deg, #3A1028 0%, #7A2045 42%, #C06070 72%, #D8B0A0 100%);
-  border-radius: 4px 4px 2px 2px;
-  box-shadow: 2px 8px 16px rgba(30,20,5,.18);
-  flex-shrink: 0;
-}
-
-/* ── Info vino nella colonna destra ── */
-.wine-hero-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding-bottom: 8px;
-}
-
-.wine-hero-eyebrow {
-  color: var(--gold);
-  font-family: var(--font-b);
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: .32em;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-}
-
-.wine-hero-title {
-  color: var(--ink);
-  font-family: var(--font-h);
-  font-size: clamp(22px, 6vw, 34px);
-  font-style: italic;
-  font-weight: 400;
-  line-height: 1.05;
-  margin-bottom: 8px;
-}
-
-.wine-hero-producer {
-  color: var(--stone);
-  font-family: var(--font-b);
-  font-size: 10px;
-  font-weight: 300;
-  letter-spacing: .18em;
-  margin-bottom: 14px;
-  text-transform: uppercase;
-}
-
-.wine-hero-badge {
-  display: inline-block;
-  border: 1px solid rgba(158,138,92,.45);
-  color: var(--gold);
-  font-family: var(--font-h);
-  font-size: 20px;
-  font-weight: 500;
-  letter-spacing: .01em;
-  padding: 6px 14px;
-  width: fit-content;
-}
-
-/* ── Note prodotto ── */
-.wine-note {
-  background: rgba(158,138,92,.08);
-  border-left: 3px solid var(--gold);
-  color: var(--stone);
-  font-family: var(--font-b);
-  font-size: 11px;
-  font-style: italic;
-  padding: 10px 20px 10px 16px;
-}
-
-/* ── Footer card ── */
-.card-footer {
-  border-top: 1px solid rgba(158,138,92,.22);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: auto;
-  padding: 14px 28px;
-  background: var(--paper);
-}
-
-.footer-brand {
-  color: var(--stone);
-  font-family: var(--font-b);
-  font-size: 9px;
-  font-weight: 300;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-}
-
-.footer-bozza {
-  color: rgba(122,112,96,.5);
-  font-family: var(--font-b);
-  font-size: 9px;
-  letter-spacing: .12em;
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WOW Range — Pel di Carota Macerato Bianco — La Gironda</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/wow-range-card.css">
 </head>
 <body>
-<nav class="top-bar">
-  <a href="index.html" class="top-bar-back">← Tutti i vini</a>
-  <span class="top-bar-campaign">WOW_RANGE_WAVE_2</span>
-</nav>
-<section class="wine-hero">
-  <div class="wine-hero-inner">
-    <div class="wine-bottle-col"><img src="assets/2101149_pel_di_carota.png" alt="Bottiglia Pel di Carota Macerato Bianco" class="wine-bottle-img" loading="lazy"></div>
-    <div class="wine-hero-info">
-      <div class="wine-hero-eyebrow">ORANGE WINE · BIANCO MACERATO</div>
-      <h1 class="wine-hero-title">Pel di Carota Macerato Bianco</h1>
-      <div class="wine-hero-producer">Azienda Agricola La Gironda</div>
-      <div class="wine-hero-badge">€ 12.50</div>
+<div class="card">
+
+  <header class="card-header">
+    <div class="wow-logo-wrapper">
+      <svg class="wow-svg" viewBox="0 0 900 295" xmlns="http://www.w3.org/2000/svg" aria-label="WOW" role="img">
+        <defs>
+          <filter id="deboss" x="-8%" y="-12%" width="116%" height="130%" color-interpolation-filters="sRGB">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="4.5" result="ab"/>
+            <feOffset in="ab" dx="3.5" dy="5" result="shadow-off"/>
+            <feFlood flood-color="#4a2e08" flood-opacity="0.55" result="sc"/>
+            <feComposite in="sc" in2="shadow-off" operator="in" result="shadow"/>
+            <feOffset in="ab" dx="-2.5" dy="-3" result="hi-off"/>
+            <feFlood flood-color="#fffbe8" flood-opacity="0.90" result="hc"/>
+            <feComposite in="hc" in2="hi-off" operator="in" result="highlight"/>
+            <feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/><feMergeNode in="highlight"/></feMerge>
+          </filter>
+          <clipPath id="clip-left-w"><rect x="0" y="0" width="295" height="295"/></clipPath>
+          <clipPath id="clip-right-w"><rect x="598" y="0" width="302" height="295"/></clipPath>
+        </defs>
+        <text x="-8" y="272" font-family="'Playfair Display', Georgia, serif" font-size="288" font-weight="900" fill="#cdc0a0" filter="url(#deboss)" clip-path="url(#clip-left-w)" letter-spacing="-2">W</text>
+        <g filter="url(#deboss)">
+          <circle cx="451" cy="148" r="122" fill="none" stroke="#cdc0a0" stroke-width="16.5"/>
+          <circle cx="451" cy="148" r="90"  fill="none" stroke="#cdc0a0" stroke-width="11.5"/>
+          <circle cx="451" cy="148" r="61"  fill="none" stroke="#cdc0a0" stroke-width="9"/>
+          <circle cx="451" cy="148" r="34"  fill="none" stroke="#cdc0a0" stroke-width="7"/>
+          <circle cx="451" cy="148" r="10"  fill="#cdc0a0"/>
+        </g>
+        <g filter="url(#deboss)">
+          <line x1="636" y1="28" x2="453" y2="147" stroke="#cdc0a0" stroke-width="5.5" stroke-linecap="round"/>
+          <polygon points="451,148 440,128 461,131" fill="#cdc0a0"/>
+          <path d="M 636,28 C 618,6 598,10 608,30 C 614,40 628,38 636,28 Z" fill="#cdc0a0" opacity="0.95"/>
+          <path d="M 636,28 C 652,8 672,14 662,34 C 656,44 641,40 636,28 Z" fill="#cdc0a0" opacity="0.95"/>
+          <path d="M 636,28 C 636,8 650,2 650,20 C 650,28 640,30 636,28 Z" fill="#cdc0a0" opacity="0.85"/>
+          <rect x="632" y="10" width="8" height="3.5" rx="1.5" fill="#cdc0a0" transform="rotate(-33, 636, 12)"/>
+        </g>
+        <text x="596" y="272" font-family="'Playfair Display', Georgia, serif" font-size="288" font-weight="900" fill="#cdc0a0" filter="url(#deboss)" clip-path="url(#clip-right-w)" letter-spacing="-2">W</text>
+      </svg>
     </div>
-  </div>
-</section>
-<div class="wine-quickinfo">
-  <div class="wine-chip"><strong>Vitigno</strong>Sauvignon Blanc · Chardonnay · Cortese</div>
-  <div class="wine-chip"><strong>Servizio</strong>10–12 °C</div>
-  <div class="wine-chip"><strong>Mood</strong>Macerato · Gastronomico · Curioso</div>
+    <div class="range-row">
+      <div class="range-dec"></div>
+      <div class="range-label">Range</div>
+      <div class="range-dec"></div>
+    </div>
+  </header>
+
+  <div class="h-sep"></div>
+
+  <main class="card-body">
+    <div class="col-left">
+      <div class="v-accent">
+        <div class="v-line-top"></div>
+        <div class="v-line-main"></div>
+        <div class="v-text">Selezione curata da Enoteche Squillari</div>
+      </div>
+      <div class="bottle-area">
+        <img src="assets/2101149_pel_di_carota.png" alt="Pel di Carota Macerato Bianco — La Gironda" class="bottle-img"
+             onerror="this.style.display='none'; document.getElementById('bf-2101149').style.display='flex'">
+        <div class="bottle-fallback" id="bf-2101149" style="display:none;">
+          <div class="bf-neck"></div>
+          <div class="bf-shoulder"></div>
+          <div class="bf-body">
+            <div class="bf-label">Pel di Carota<br>Macerato<hr style="border:none;border-top:0.5px solid #aaa;margin:3px 0">LA GIRONDA</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-right">
+      <div class="producer-name">La Gironda</div>
+      <h1 class="wine-name">&lsquo;Pel di Carota Macerato Bianco&rsquo;</h1>
+      <div class="denomination">Piemonte · Cortese · Macerazione</div>
+      <div class="wine-code">#2101149 &middot; &euro;&nbsp;12,50</div>
+
+      <div class="rule"></div>
+
+      <div class="sec-label">Perché è stato scelto</div>
+      <p class="sec-text">Il bianco che vuole stare sulle bucce. Cortese in macerazione: colore ramato, tannino sottile, lunghezza insolita per il Monferrato.</p>
+
+      <div class="rule"></div>
+
+      <div class="sec-label">Degustazione minimale</div>
+      <p class="sec-text">Albicocca secca e pesca bianca. Bocca ampia con tannino vellutato. Lunghezza e persistenza inaspettate.</p>
+
+      <div class="rule"></div>
+
+      <div class="sec-label">Specifiche archivio</div>
+      <ul class="specs">
+        <li>Uvaggio: 100% Cortese</li>
+        <li>Affinamento: Macerazione sulle bucce</li>
+        <li>Servizio: 12–14°C</li>
+        <li>Potenziale: 2–4 anni</li>
+        <li>Mood: Piemontese · Arancio · Naturale</li>
+      </ul>
+
+      <div class="rule"></div>
+
+      <div class="sec-label">WOW Experience</div>
+      <div class="wow-exp-row">
+        <div class="qr-vote-area">
+          <p class="qr-caption"><em>Scansiona per aprire la scheda</em></p>
+          <a href="../index_gallery.html" class="vote-cta">TUTTI I VINI WOW</a>
+        </div>
+        <div class="qr-box">
+          <img src="../assets/qr/2101149_pel_di_carota_macerato_bianco_qr.png" alt="QR Pel di Carota Macerato Bianco" class="qr-img">
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="card-footer">
+    <div class="footer-rule"></div>
+    <div class="footer-ornament">✦</div>
+    <div class="footer-inner">
+      <div class="footer-fill"></div>
+      <div class="footer-brand">
+        <span class="sq-prefix">Enoteche</span>
+        <span class="sq-name">Squillari</span>
+      </div>
+      <div style="width:0.5px;height:12mm;background:rgba(90,70,35,0.38);margin:0 4mm;opacity:0.5;"></div>
+      <div class="footer-emblem">
+        <div class="emblem-css" aria-hidden="true"><span>S</span></div>
+      </div>
+    </div>
+  </footer>
+
 </div>
-<section class="wine-story">
-  <div class="wine-story-label">La storia</div>
-  <p class="wine-story-text">Le uve fermentano a contatto con le bucce per circa due settimane, dando vita a un bianco macerato dal colore giallo arancio. La scheda descrive frutta matura, agrumi, miele ed erbe aromatiche, con delicati tannini e una vena sapida.</p>
-</section>
-<section class="wine-pairing">
-  <div class="wine-pairing-label">Abbinamenti consigliati</div>
-  <div class="wine-pairing-item"><div class="wine-pairing-dot"></div><span>Tempura di verdure o pesce</span></div><div class="wine-pairing-item"><div class="wine-pairing-dot"></div><span>Risotti e funghi</span></div><div class="wine-pairing-item"><div class="wine-pairing-dot"></div><span>Formaggi stagionati</span></div>
-</section>
-<div class="wine-music"><span class="wine-music-icon">♪</span><span class="wine-music-text">Indie folk — materico, caldo, fuori dagli schemi</span></div>
-<div class="wine-wow-section">
-  <div class="wine-wow-tagline">Solo i più votati restano.</div>
-  <p class="wine-wow-desc">WOW RANGE è una selezione in evoluzione: i vini che raccolgono più voti rimangono in carta. Il tuo giudizio ha peso reale.</p>
-</div>
-<section class="wine-qr">
-  <a href="https://q.me-qr.com/pmdxfsmp" target="_blank" rel="noopener" style="display:block;text-decoration:none"><img src="assets/2101149-qr-final.png" alt="QR voto WOW RANGE" style="width:120px;height:120px;display:block;border:1px solid rgba(158,138,92,.4)"></a>
-  <div><div class="wine-qr-headline">Vota questo vino</div><p class="wine-qr-sub">Scansiona il QR e lascia il tuo voto. Bastano trenta secondi per fare la differenza.</p></div>
-</section>
-<div class="wine-cta"><a href="index.html" class="wine-cta-btn"><span>← Scopri gli altri vini WOW RANGE</span><span style="color:var(--gold)">→</span></a></div>
-<div class="card-footer"><span class="footer-brand">Enoteca Squillari · WOW RANGE</span><span class="footer-bozza">Bozza · Human Approval Required</span></div>
 </body>
 </html>
