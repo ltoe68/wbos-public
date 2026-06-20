@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>WOW RANGE — Tutti i vini · Enoteca Squillari</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Raleway:wght@200;300;400;600&display=swap" rel="stylesheet">
+<style>
+/* =====================================================
+   WOW RANGE — Premium Local HTML Stylesheet
+   Palette: carta naturale, nero caldo, oro opaco, bordeaux.
+   Font: Cormorant Garamond (serif) + Raleway (sans)
+   Recuperato da wow-range.css legacy — Enoteca Squillari
+   ===================================================== */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* ── Palette legacy premium ── */
+  --paper:         #F0EBE0;
+  --paper-dark:    #E8E1D4;
+  --ink:           #1E1912;
+  --stone:         #7A7060;
+  --dust:          #B0A590;
+  --gold:          #9E8A5C;
+  --gold-light:    #C4AC7A;
+
+  /* ── Alias compatibilità nuovi template ── */
+  --avorio:        #FBF7EE;
+  --crema:         #F2E8D8;
+  --nero:          #1A120D;
+  --nero-soft:     #2B211A;
+  --oro:           #B89446;
+  --oro-soft:      #D9C28A;
+  --bordeaux:      #6F1D34;
+  --bordeaux-soft: #8E3B4F;
+  --grigio:        #6C5D50;
+  --linea:         rgba(184, 148, 70, .34);
+  --ombra:         0 18px 48px rgba(45, 31, 22, .10);
+
+  /* ── Font stack premium ── */
+  --font-h: 'Cormorant Garamond', 'Playfair Display', 'Palatino Linotype', Georgia, serif;
+  --font-b: 'Raleway', Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+html { background: var(--crema); }
+body {
+  color: var(--nero);
+  font-family: var(--font-b);
+  font-size: 14px;
+  line-height: 1.55;
+  letter-spacing: 0;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.oro { color: var(--oro); }
+.bordeaux { color: var(--bordeaux); }
+.italic { font-style: italic; }
+
+.divider {
+  border: 0;
+  border-top: 1px solid var(--linea);
+  margin: 24px 0;
+}
+
+.divider-oro {
+  border: 0;
+  border-top: 1px solid var(--oro);
+  margin: 18px 0;
+}
+
+.logo-placeholder {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  border: 1px solid var(--linea);
+  color: var(--oro);
+  font-family: var(--font-h);
+  font-size: 12px;
+  letter-spacing: .24em;
+  padding: 5px 14px;
+  text-transform: uppercase;
+}
+
+.qr-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.qr-box {
+  width: 132px;
+  height: 132px;
+  border: 2px solid var(--nero);
+  background:
+    linear-gradient(90deg, transparent 47%, rgba(26,18,13,.72) 47% 53%, transparent 53%),
+    linear-gradient(0deg, transparent 47%, rgba(26,18,13,.72) 47% 53%, transparent 53%),
+    repeating-linear-gradient(45deg, rgba(26,18,13,.95) 0 4px, transparent 4px 9px),
+    var(--avorio);
+  box-shadow: 0 0 0 8px var(--avorio), 0 10px 26px rgba(26, 18, 13, .15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.qr-box::before,
+.qr-box::after {
+  content: '';
+  position: absolute;
+  width: 31px;
+  height: 31px;
+  border: 7px solid var(--nero);
+  background: var(--avorio);
+}
+
+.qr-box::before { top: 10px; left: 10px; }
+.qr-box::after { right: 10px; bottom: 10px; }
+
+.qr-center {
+  width: 32px;
+  height: 32px;
+  background: var(--nero);
+  border: 6px solid var(--avorio);
+  box-shadow: 0 0 0 2px var(--nero);
+  z-index: 1;
+}
+
+.qr-label {
+  color: var(--nero);
+  font-family: var(--font-b);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .16em;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.qr-sublabel {
+  color: var(--grigio);
+  font-size: 9px;
+  line-height: 1.25;
+  margin-top: -5px;
+  text-align: center;
+}
+
+@media print {
+  html, body {
+    background: white !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  body { margin: 0; }
+
+  a { color: inherit; text-decoration: none; }
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   WINE CARD COMPONENTS
+   Mobile-first · Luxury editorial
+   Usati da wine_card_template.html e wine_cards/index.html
+───────────────────────────────────────────────────────────────── */
+
+/* Hero immersivo — sfondo CSS gradient, nessuna immagine esterna */
+.wine-hero {
+  min-height: 52vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 40px 28px 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.wine-hero-eyebrow {
+  color: var(--oro-soft);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .3em;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+
+.wine-hero-title {
+  color: var(--avorio);
+  font-family: var(--font-h);
+  font-size: clamp(32px, 8vw, 52px);
+  font-weight: 600;
+  line-height: .96;
+  margin-bottom: 12px;
+}
+
+.wine-hero-producer {
+  color: rgba(251,247,238,.62);
+  font-size: 13px;
+  letter-spacing: .08em;
+  margin-bottom: 18px;
+}
+
+.wine-hero-badge {
+  align-items: center;
+  background: rgba(251,247,238,.1);
+  border: 1px solid var(--oro);
+  color: var(--oro-soft);
+  display: inline-flex;
+  font-size: 22px;
+  font-family: var(--font-h);
+  font-weight: 600;
+  letter-spacing: .01em;
+  padding: 8px 18px;
+  width: fit-content;
+}
+
+/* Sezione storia — testo editoriale */
+.wine-story {
+  padding: 32px 28px;
+  border-bottom: 1px solid var(--linea);
+}
+
+.wine-story-label {
+  color: var(--bordeaux);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .28em;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+
+.wine-story-text {
+  color: var(--nero-soft);
+  font-family: var(--font-h);
+  font-size: 18px;
+  font-style: italic;
+  line-height: 1.55;
+}
+
+/* Sezione abbinamenti */
+.wine-pairing {
+  padding: 28px 28px;
+  border-bottom: 1px solid var(--linea);
+}
+
+.wine-pairing-label {
+  color: var(--bordeaux);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .28em;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.wine-pairing-item {
+  align-items: center;
+  border-bottom: 1px solid var(--linea);
+  color: var(--nero);
+  display: flex;
+  font-size: 14px;
+  gap: 14px;
+  padding: 13px 0;
+}
+
+.wine-pairing-item:last-child { border-bottom: 0; }
+
+.wine-pairing-dot {
+  background: var(--oro);
+  border-radius: 50%;
+  flex-shrink: 0;
+  height: 6px;
+  width: 6px;
+}
+
+/* Sezione QR voto */
+.wine-qr {
+  align-items: center;
+  background: var(--nero);
+  display: grid;
+  gap: 24px;
+  grid-template-columns: auto 1fr;
+  padding: 28px;
+}
+
+.wine-qr-headline {
+  color: var(--oro-soft);
+  font-family: var(--font-h);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.wine-qr-sub {
+  color: rgba(251,247,238,.7);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* CTA area — link di navigazione */
+.wine-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 28px;
+}
+
+.wine-cta-btn {
+  align-items: center;
+  border: 1px solid var(--linea);
+  color: var(--nero);
+  display: flex;
+  font-size: 14px;
+  font-weight: 600;
+  justify-content: space-between;
+  padding: 16px 20px;
+  text-decoration: none;
+}
+
+.wine-cta-btn:hover {
+  background: var(--crema);
+  border-color: var(--oro);
+}
+
+.wine-cta-btn.primary {
+  background: var(--bordeaux);
+  border-color: var(--bordeaux);
+  color: var(--avorio);
+}
+
+.wine-cta-btn.primary:hover { background: #8E3B4F; }
+
+/* Quick info chips */
+.wine-quickinfo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 22px 28px;
+  border-bottom: 1px solid var(--linea);
+}
+
+.wine-chip {
+  background: var(--crema);
+  border: 1px solid var(--linea);
+  border-radius: 2px;
+  color: var(--nero);
+  font-size: 12px;
+  padding: 7px 12px;
+}
+
+.wine-chip strong {
+  color: var(--bordeaux);
+  display: block;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .2em;
+  margin-bottom: 3px;
+  text-transform: uppercase;
+}
+
+/* Music mood */
+.wine-music {
+  align-items: center;
+  border-bottom: 1px solid var(--linea);
+  display: flex;
+  gap: 14px;
+  padding: 20px 28px;
+}
+
+.wine-music-icon {
+  color: var(--oro);
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.wine-music-text {
+  color: var(--grigio);
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.45;
+}
+
+/* WOW RANGE section inside wine card */
+.wine-wow-section {
+  background: var(--crema);
+  border-top: 2px solid var(--oro);
+  border-bottom: 2px solid var(--oro);
+  padding: 24px 28px;
+}
+
+.wine-wow-tagline {
+  color: var(--bordeaux);
+  font-family: var(--font-h);
+  font-size: 20px;
+  font-style: italic;
+  margin-bottom: 8px;
+}
+
+.wine-wow-desc {
+  color: var(--grigio);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+
+
+html { background: var(--paper-dark); }
+body { background: var(--paper-dark); max-width: 560px; margin: 0 auto; min-height: 100vh; padding-bottom: 40px; }
+
+.index-header { padding: 28px 24px 18px; border-bottom: 1px solid rgba(158,138,92,.28); background: var(--paper); position: sticky; top: 0; z-index: 10; }
+.index-eyebrow { color: var(--gold); font-family: var(--font-b); font-size: 9px; font-weight: 300; letter-spacing: .32em; text-transform: uppercase; margin-bottom: 6px; }
+.index-title { color: var(--ink); font-family: var(--font-h); font-size: 28px; font-style: italic; font-weight: 400; line-height: 1.05; }
+.index-tagline { color: var(--stone); font-family: var(--font-b); font-size: 11px; font-weight: 300; margin-top: 6px; letter-spacing: .04em; }
+
+.gallery-grid { display: flex; flex-direction: column; gap: 1px; background: rgba(158,138,92,.18); margin-top: 1px; }
+.gallery-card { display: block; text-decoration: none; background: var(--paper); }
+.gallery-card:hover .gallery-foot { background: var(--paper-dark); }
+
+.gallery-foot { display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; background: var(--paper); transition: background .15s; border-top: 1px solid rgba(158,138,92,.18); }
+.gallery-price { color: var(--ink); font-family: var(--font-h); font-size: 15px; font-weight: 400; }
+.gallery-cta { color: var(--gold); font-family: var(--font-b); font-size: 10px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+
+.index-footer { padding: 20px 24px; text-align: center; color: var(--stone); font-family: var(--font-b); font-size: 9px; font-weight: 300; letter-spacing: .18em; text-transform: uppercase; border-top: 1px solid rgba(158,138,92,.22); margin-top: 1px; background: var(--paper); }
+.index-vote-strip { background: var(--ink); color: var(--gold-light); font-family: var(--font-h); font-style: italic; font-size: 18px; text-align: center; padding: 18px 24px; letter-spacing: .04em; }
+</style>
+</head>
+<body>
+<header class="index-header">
+  <div class="index-eyebrow">Enoteca Squillari</div>
+  <div class="index-title">WOW RANGE</div>
+  <div class="index-tagline">WOW_RANGE_01 · 9 vini in selezione · Solo i più votati restano</div>
+</header>
+
+<div class="index-vote-strip">Scansiona il QR su ogni scheda e vota il tuo vino preferito.</div>
+
+<div class="gallery-grid">
+
+<a class="gallery-card" href="belisario_marche_rosato_igt.html" style="position:relative">
+  <span style="position:absolute;top:10px;right:10px;background:rgba(158,138,92,.15);border:1px solid rgba(158,138,92,.4);color:#9E8A5C;font-size:8px;letter-spacing:.14em;padding:3px 8px;text-transform:uppercase">✓ Pronto</span>
+  <div class="gallery-hero" style="background:var(--paper);border-bottom:1px solid rgba(158,138,92,.22);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:16px 16px 0;min-height:200px">
+    <img src="assets/03_belisario_marche_rosato_igt.png" alt="Bottiglia Belisario Marche Rosato IGT" style="max-height:160px;max-width:90px;object-fit:contain;filter:drop-shadow(2px 6px 14px rgba(30,20,5,.22));margin-bottom:12px">
+    <div style="width:100%;padding:12px 16px 14px;background:var(--paper)">
+      <div style="color:var(--gold);font-family:var(--font-b);font-size:9px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;margin-bottom:6px">ROSATO · MARCHE IGT</div>
+      <div style="color:var(--ink);font-family:var(--font-h);font-style:italic;font-size:20px;font-weight:400;line-height:1.05;margin-bottom:4px">Belisario Marche Rosato IGT</div>
+      <div style="color:var(--stone);font-family:var(--font-b);font-size:10px;font-weight:300;letter-spacing:.14em;text-transform:uppercase">Belisario</div>
+    </div>
+  </div>
+  <div class="gallery-foot">
+    <span class="gallery-price">€ 6,90 – 7,50</span>
+    <span class="gallery-cta">Scopri →</span>
+  </div>
+</a>
+<a class="gallery-card" href="nadir_spumante_verdicchio.html" style="position:relative">
+  <span style="position:absolute;top:10px;right:10px;background:rgba(158,138,92,.15);border:1px solid rgba(158,138,92,.4);color:#9E8A5C;font-size:8px;letter-spacing:.14em;padding:3px 8px;text-transform:uppercase">✓ Pronto</span>
+  <div class="gallery-hero" style="background:var(--paper);border-bottom:1px solid rgba(158,138,92,.22);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:16px 16px 0;min-height:200px">
+    <img src="assets/08_tara_spumante_verdicchio.png" alt="Bottiglia Nadir Spumante Verdicchio" style="max-height:160px;max-width:90px;object-fit:contain;filter:drop-shadow(2px 6px 14px rgba(30,20,5,.22));margin-bottom:12px">
+    <div style="width:100%;padding:12px 16px 14px;background:var(--paper)">
+      <div style="color:var(--gold);font-family:var(--font-b);font-size:9px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;margin-bottom:6px">SPUMANTE · MARCHE</div>
+      <div style="color:var(--ink);font-family:var(--font-h);font-style:italic;font-size:20px;font-weight:400;line-height:1.05;margin-bottom:4px">Nadir Spumante Verdicchio</div>
+      <div style="color:var(--stone);font-family:var(--font-b);font-size:10px;font-weight:300;letter-spacing:.14em;text-transform:uppercase">Belisario</div>
+    </div>
+  </div>
+  <div class="gallery-foot">
+    <span class="gallery-price">€ 7,90 – 8,50</span>
+    <span class="gallery-cta">Scopri →</span>
+  </div>
+</a>
+<a class="gallery-card" href="ciliegiolo_toscana.html" style="position:relative">
+  <span style="position:absolute;top:10px;right:10px;background:rgba(158,138,92,.15);border:1px solid rgba(158,138,92,.4);color:#9E8A5C;font-size:8px;letter-spacing:.14em;padding:3px 8px;text-transform:uppercase">✓ Pronto</span>
+  <div class="gallery-hero" style="background:var(--paper);border-bottom:1px solid rgba(158,138,92,.22);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:16px 16px 0;min-height:200px">
+    <img src="assets/04_ciliegiolo_toscana_senza_solfiti_aggiunti.png" alt="Bottiglia Ciliegiolo Toscana" style="max-height:160px;max-width:90px;object-fit:contain;filter:drop-shadow(2px 6px 14px rgba(30,20,5,.22));margin-bottom:12px">
+    <div style="width:100%;padding:12px 16px 14px;background:var(--paper)">
+      <div style="color:var(--gold);font-family:var(--font-b);font-size:9px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;margin-bottom:6px">ROSSO · TOSCANA IGT</div>
+      <div style="color:var(--ink);font-family:var(--font-h);font-style:italic;font-size:20px;font-weight:400;line-height:1.05;margin-bottom:4px">Ciliegiolo Toscana</div>
+      <div style="color:var(--stone);font-family:var(--font-b);font-size:10px;font-weight:300;letter-spacing:.14em;text-transform:uppercase">Fattoria dei Barbi</div>
+    </div>
+  </div>
+  <div class="gallery-foot">
+    <span class="gallery-price">€ 9,90 – 10,90</span>
+    <span class="gallery-cta">Scopri →</span>
+  </div>
+</a>
+<a class="gallery-card" href="negroamaro_rose.html" style="position:relative">
+  <span style="position:absolute;top:10px;right:10px;background:rgba(158,138,92,.15);border:1px solid rgba(158,138,92,.4);color:#9E8A5C;font-size:8px;letter-spacing:.14em;padding:3px 8px;text-transform:uppercase">✓ Pronto</span>
+  <div class="gallery-hero" style="background:var(--paper);border-bottom:1px solid rgba(158,138,92,.22);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:16px 16px 0;min-height:200px">
+    <img src="assets/02_negroamaro_rose.png" alt="Bottiglia Negroamaro Rosé" style="max-height:160px;max-width:90px;object-fit:contain;filter:drop-shadow(2px 6px 14px rgba(30,20,5,.22));margin-bottom:12px">
+    <div style="width:100%;padding:12px 16px 14px;background:var(--paper)">
+      <div style="color:var(--gold);font-family:var(--font-b);font-size:9px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;margin-bottom:6px">ROSÉ · PUGLIA</div>
+      <div style="color:var(--ink);font-family:var(--font-h);font-style:italic;font-size:20px;font-weight:400;line-height:1.05;margin-bottom:4px">Negroamaro Rosé</div>
+      <div style="color:var(--stone);font-family:var(--font-b);font-size:10px;font-weight:300;letter-spacing:.14em;text-transform:uppercase">Casino Nitti</div>
+    </div>
+  </div>
+  <div class="gallery-foot">
+    <span class="gallery-price">€ 6,90 – 7,90</span>
+    <span class="gallery-cta">Scopri →</span>
+  </div>
+</a>
+<a class="gallery-card" href="langhe_arneis.html" style="position:relative">
+  <span style="position:absolute;top:10px;right:10px;background:rgba(158,138,92,.15);border:1px solid rgba(158,138,92,.4);color:#9E8A5C;font-size:8px;letter-spacing:.14em;padding:3px 8px;text-transform:uppercase">✓ Pronto</span>
+  <div class="gallery-hero" style="background:var(--paper);border-bottom:1px solid rgba(158,138,92,.22);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:16px 16px 0;min-height:200px">
+    <img src="assets/05_langhe_arneis.png" alt="Bottiglia Langhe Arneis" style="max-height:160px;max-width:90px;object-fit:contain;filter:drop-shadow(2px 6px 14px rgba(30,20,5,.22));margin-bottom:12px">
+    <div style="width:100%;padding:12px 16px 14px;background:var(--paper)">
+      <div style="color:var(--gold);font-family:var(--font-b);font-size:9px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;margin-bottom:6px">BIANCO · LANGHE DOC</div>
+      <div style="color:var(--ink);font-family:var(--font-h);font-style:italic;font-size:20px;font-weight:400;line-height:1.05;margin-bottom:4px">Langhe Arneis</div>
+      <div style="color:var(--stone);font-family:var(--font-b);font-size:10px;font-weight:300;letter-spacing:.14em;text-transform:uppercase">Dosio</div>
+    </div>
+  </div>
+  <div class="gallery-foot">
+    <span class="gallery-price">€ 9,90 – 11,90</span>
+    <span class="gallery-cta">Scopri →</span>
+  </div>
+</a>
+<a class="gallery-card" href="frappato_rose_coraline.html" style="position:relative">
+  <span style="position:absolute;top:10px;right:10px;background:rgba(158,138,92,.15);border:1px solid rgba(158,138,92,.4);color:#9E8A5C;font-size:8px;letter-spacing:.14em;padding:3px 8px;text-transform:uppercase">✓ Pronto</span>
+  <div class="gallery-hero" style="background:var(--paper);border-bottom:1px solid rgba(158,138,92,.22);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:16px 16px 0;min-height:200px">
+    <img src="assets/06_frappato_rose_coraline.png" alt="Bottiglia Frappato Rosé Coraline" style="max-height:160px;max-width:90px;object-fit:contain;filter:drop-shadow(2px 6px 14px rgba(30,20,5,.22));margin-bottom:12px">
+    <div style="width:100%;padding:12px 16px 14px;background:var(--paper)">
+      <div style="color:var(--gold);font-family:var(--font-b);font-size:9px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;margin-bottom:6px">ROSÉ · SICILIA DOC</div>
+      <div style="color:var(--ink);font-family:var(--font-h);font-style:italic;font-size:20px;font-weight:400;line-height:1.05;margin-bottom:4px">Frappato Rosé Coraline</div>
+      <div style="color:var(--stone);font-family:var(--font-b);font-size:10px;font-weight:300;letter-spacing:.14em;text-transform:uppercase">Brugnano</div>
+    </div>
+  </div>
+  <div class="gallery-foot">
+    <span class="gallery-price">€ 10,90 – 11,90</span>
+    <span class="gallery-cta">Scopri →</span>
+  </div>
+</a>
+<a class="gallery-card" href="viognier_inzolia.html" style="position:relative">
+  <span style="position:absolute;top:10px;right:10px;background:rgba(158,138,92,.15);border:1px solid rgba(158,138,92,.4);color:#9E8A5C;font-size:8px;letter-spacing:.14em;padding:3px 8px;text-transform:uppercase">✓ Pronto</span>
+  <div class="gallery-hero" style="background:var(--paper);border-bottom:1px solid rgba(158,138,92,.22);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:16px 16px 0;min-height:200px">
+    <img src="assets/07_viognier_inzolia.png" alt="Bottiglia Viognier Inzolia" style="max-height:160px;max-width:90px;object-fit:contain;filter:drop-shadow(2px 6px 14px rgba(30,20,5,.22));margin-bottom:12px">
+    <div style="width:100%;padding:12px 16px 14px;background:var(--paper)">
+      <div style="color:var(--gold);font-family:var(--font-b);font-size:9px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;margin-bottom:6px">BIANCO · SICILIA IGT</div>
+      <div style="color:var(--ink);font-family:var(--font-h);font-style:italic;font-size:20px;font-weight:400;line-height:1.05;margin-bottom:4px">Viognier Inzolia</div>
+      <div style="color:var(--stone);font-family:var(--font-b);font-size:10px;font-weight:300;letter-spacing:.14em;text-transform:uppercase">Brugnano</div>
+    </div>
+  </div>
+  <div class="gallery-foot">
+    <span class="gallery-price">€ 8,90 – 9,90</span>
+    <span class="gallery-cta">Scopri →</span>
+  </div>
+</a>
+<a class="gallery-card" href="chardonnay_barrique.html" style="position:relative">
+  <span style="position:absolute;top:10px;right:10px;background:rgba(158,138,92,.15);border:1px solid rgba(158,138,92,.4);color:#9E8A5C;font-size:8px;letter-spacing:.14em;padding:3px 8px;text-transform:uppercase">✓ Pronto</span>
+  <div class="gallery-hero" style="background:var(--paper);border-bottom:1px solid rgba(158,138,92,.22);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:16px 16px 0;min-height:200px">
+    <img src="assets/09_chardonnay_barrique_la_torre.png" alt="Bottiglia Chardonnay Barrique" style="max-height:160px;max-width:90px;object-fit:contain;filter:drop-shadow(2px 6px 14px rgba(30,20,5,.22));margin-bottom:12px">
+    <div style="width:100%;padding:12px 16px 14px;background:var(--paper)">
+      <div style="color:var(--gold);font-family:var(--font-b);font-size:9px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;margin-bottom:6px">BIANCO BARRIQUE · TOSCANA</div>
+      <div style="color:var(--ink);font-family:var(--font-h);font-style:italic;font-size:20px;font-weight:400;line-height:1.05;margin-bottom:4px">Chardonnay Barrique</div>
+      <div style="color:var(--stone);font-family:var(--font-b);font-size:10px;font-weight:300;letter-spacing:.14em;text-transform:uppercase">La Torre</div>
+    </div>
+  </div>
+  <div class="gallery-foot">
+    <span class="gallery-price">€ 14,90 – 16,90</span>
+    <span class="gallery-cta">Scopri →</span>
+  </div>
+</a>
+<a class="gallery-card" href="nebbiolo.html" style="position:relative">
+  <span style="position:absolute;top:10px;right:10px;background:rgba(158,138,92,.15);border:1px solid rgba(158,138,92,.4);color:#9E8A5C;font-size:8px;letter-spacing:.14em;padding:3px 8px;text-transform:uppercase">✓ Pronto</span>
+  <div class="gallery-hero" style="background:var(--paper);border-bottom:1px solid rgba(158,138,92,.22);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:16px 16px 0;min-height:200px">
+    <img src="assets/01_nebbiolo_dosio.png" alt="Bottiglia Nebbiolo" style="max-height:160px;max-width:90px;object-fit:contain;filter:drop-shadow(2px 6px 14px rgba(30,20,5,.22));margin-bottom:12px">
+    <div style="width:100%;padding:12px 16px 14px;background:var(--paper)">
+      <div style="color:var(--gold);font-family:var(--font-b);font-size:9px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;margin-bottom:6px">ROSSO · LANGHE DOC</div>
+      <div style="color:var(--ink);font-family:var(--font-h);font-style:italic;font-size:20px;font-weight:400;line-height:1.05;margin-bottom:4px">Nebbiolo</div>
+      <div style="color:var(--stone);font-family:var(--font-b);font-size:10px;font-weight:300;letter-spacing:.14em;text-transform:uppercase">Dosio</div>
+    </div>
+  </div>
+  <div class="gallery-foot">
+    <span class="gallery-price">€ 13,90 – 15,90</span>
+    <span class="gallery-cta">Scopri →</span>
+  </div>
+</a>
+</div>
+
+<div class="index-footer">Enoteca Squillari · WOW RANGE · Bozza · Human Approval Required</div>
+</body>
+</html>
