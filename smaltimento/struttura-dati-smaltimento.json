@@ -1,0 +1,128 @@
+{
+  "campi_prodotto": [
+    "slug (ancora stabile)",
+    "nome",
+    "produttore",
+    "formato_cl",
+    "ean",
+    "qr_url",
+    "provenienza_commerciale",
+    "fonte_ufficiale_imballaggio",
+    "stato_verifica",
+    "componenti[]",
+    "ultima_verifica",
+    "fonte"
+  ],
+  "campi_componente": [
+    "componente",
+    "materiale",
+    "codice_candidato",
+    "separabile_a_mano (si/no)",
+    "destinazione",
+    "stato"
+  ],
+  "prodotti": [
+    {
+      "slug": "lanson-black-label-brut",
+      "nome": "Lanson Le Black Label Brut (ora Le Black Création)",
+      "formato": "75 cl / Magnum 150 cl",
+      "qr_url": "/smaltimento#lanson-black-label-brut",
+      "provenienza_commerciale": "Francia — importazione parallela",
+      "fonte_ufficiale_imballaggio": "non_disponibile",
+      "stato_verifica": "verifica_fisica_richiesta",
+      "componenti": [
+        {"componente":"Bottiglia","materiale":"Vetro (verde)","codice_candidato":"GL 71","stato":"da_verificare_su_imballaggio_fisico"},
+        {"componente":"Tappo","materiale":"Sughero","codice_candidato":"FOR 51","stato":"da_verificare_su_imballaggio_fisico"},
+        {"componente":"Gabbietta (muselet)","materiale":"Acciaio","codice_candidato":"FE 40","stato":"da_verificare_su_imballaggio_fisico"},
+        {"componente":"Piastrina sotto la gabbietta","materiale":"Metallo (da verificare)","codice_candidato":"FE 40 / ALU 41","stato":"da_verificare_su_imballaggio_fisico"},
+        {"componente":"Capsula copritappo","materiale":"Alluminio o accoppiato","codice_candidato":"ALU 41 / C/ALU (da verificare)","stato":"da_verificare_su_imballaggio_fisico"},
+        {"componente":"Etichetta","materiale":"Carta","codice_candidato":"PAP 22","stato":"da_verificare_su_imballaggio_fisico"}
+      ]
+    },
+    {
+      "slug": "lanson-rose-label",
+      "nome": "Lanson Rosé Label Brut",
+      "formato": "75 cl",
+      "qr_url": "/smaltimento#lanson-rose-label",
+      "provenienza_commerciale": "Francia — importazione parallela",
+      "fonte_ufficiale_imballaggio": "non_disponibile",
+      "stato_verifica": "verifica_fisica_richiesta",
+      "componenti": [
+        {"componente":"Bottiglia","materiale":"Vetro (verde)","codice_candidato":"GL 71","stato":"da_verificare_su_imballaggio_fisico"},
+        {"componente":"Tappo","materiale":"Sughero","codice_candidato":"FOR 51","stato":"da_verificare_su_imballaggio_fisico"},
+        {"componente":"Gabbietta (muselet)","materiale":"Acciaio","codice_candidato":"FE 40","stato":"da_verificare_su_imballaggio_fisico"},
+        {"componente":"Piastrina sotto la gabbietta","materiale":"Metallo (da verificare)","codice_candidato":"FE 40 / ALU 41","stato":"da_verificare_su_imballaggio_fisico"},
+        {"componente":"Capsula copritappo","materiale":"Alluminio o accoppiato","codice_candidato":"ALU 41 / C/ALU (da verificare)","stato":"da_verificare_su_imballaggio_fisico"},
+        {"componente":"Etichetta","materiale":"Carta","codice_candidato":"PAP 22","stato":"da_verificare_su_imballaggio_fisico"}
+      ]
+    },
+    {
+      "slug": "lanson-le-blanc-de-blancs",
+      "nome": "Lanson Le Blanc de Blancs",
+      "formato": "75 cl",
+      "qr_url": "/smaltimento#lanson-le-blanc-de-blancs",
+      "provenienza_commerciale": "Francia — importazione parallela",
+      "fonte_ufficiale_imballaggio": "non_disponibile",
+      "stato_verifica": "verifica_fisica_richiesta",
+      "componenti": [
+        {"componente":"Bottiglia","materiale":"Vetro (verde)","codice_candidato":"GL 71","stato":"da_verificare_su_imballaggio_fisico"},
+        {"componente":"Tappo","materiale":"Sughero","codice_candidato":"FOR 51","stato":"da_verificare_su_imballaggio_fisico"},
+        {"componente":"Gabbietta (muselet)","materiale":"Acciaio","codice_candidato":"FE 40","stato":"da_verificare_su_imballaggio_fisico"},
+        {"componente":"Piastrina sotto la gabbietta","materiale":"Metallo (da verificare)","codice_candidato":"FE 40 / ALU 41","stato":"da_verificare_su_imballaggio_fisico"},
+        {"componente":"Capsula copritappo","materiale":"Alluminio o accoppiato","codice_candidato":"ALU 41 / C/ALU (da verificare)","stato":"da_verificare_su_imballaggio_fisico"},
+        {"componente":"Etichetta","materiale":"Carta","codice_candidato":"PAP 22","stato":"da_verificare_su_imballaggio_fisico"}
+      ]
+    },
+    {
+      "slug": "lanson-le-black-reserve",
+      "nome": "Lanson Le Black Réserve (Le Réserve Extra Brut)",
+      "formato": "75 cl",
+      "qr_url": "/smaltimento#lanson-le-black-reserve",
+      "provenienza_commerciale": "Francia — importazione parallela",
+      "fonte_ufficiale_imballaggio": "non_disponibile",
+      "stato_verifica": "verifica_fisica_richiesta",
+      "componenti": [
+        {"componente":"Bottiglia","materiale":"Vetro (verde)","codice_candidato":"GL 71","stato":"da_verificare_su_imballaggio_fisico"},
+        {"componente":"Tappo","materiale":"Sughero","codice_candidato":"FOR 51","stato":"da_verificare_su_imballaggio_fisico"},
+        {"componente":"Gabbietta (muselet)","materiale":"Acciaio","codice_candidato":"FE 40","stato":"da_verificare_su_imballaggio_fisico"},
+        {"componente":"Piastrina sotto la gabbietta","materiale":"Metallo (da verificare)","codice_candidato":"FE 40 / ALU 41","stato":"da_verificare_su_imballaggio_fisico"},
+        {"componente":"Capsula copritappo","materiale":"Alluminio o accoppiato","codice_candidato":"ALU 41 / C/ALU (da verificare)","stato":"da_verificare_su_imballaggio_fisico"},
+        {"componente":"Etichetta","materiale":"Carta","codice_candidato":"PAP 22","stato":"da_verificare_su_imballaggio_fisico"}
+      ]
+    },
+    {
+      "slug": "lanson-noble-cuvee",
+      "nome": "Lanson Noble Cuvée",
+      "formato": "75 cl",
+      "qr_url": "/smaltimento#lanson-noble-cuvee",
+      "provenienza_commerciale": "Francia — importazione parallela",
+      "fonte_ufficiale_imballaggio": "non_disponibile",
+      "stato_verifica": "verifica_fisica_richiesta",
+      "componenti": [
+        {"componente":"Bottiglia","materiale":"Vetro (verde)","codice_candidato":"GL 71","stato":"da_verificare_su_imballaggio_fisico"},
+        {"componente":"Tappo","materiale":"Sughero","codice_candidato":"FOR 51","stato":"da_verificare_su_imballaggio_fisico"},
+        {"componente":"Gabbietta (muselet)","materiale":"Acciaio","codice_candidato":"FE 40","stato":"da_verificare_su_imballaggio_fisico"},
+        {"componente":"Piastrina sotto la gabbietta","materiale":"Metallo (da verificare)","codice_candidato":"FE 40 / ALU 41","stato":"da_verificare_su_imballaggio_fisico"},
+        {"componente":"Capsula copritappo","materiale":"Alluminio o accoppiato","codice_candidato":"ALU 41 / C/ALU (da verificare)","stato":"da_verificare_su_imballaggio_fisico"},
+        {"componente":"Etichetta","materiale":"Carta","codice_candidato":"PAP 22","stato":"da_verificare_su_imballaggio_fisico"}
+      ]
+    },
+    {
+      "slug": "lanson-vintage",
+      "nome": "Lanson Vintage",
+      "formato": "75 cl",
+      "qr_url": "/smaltimento#lanson-vintage",
+      "provenienza_commerciale": "Francia — importazione parallela",
+      "fonte_ufficiale_imballaggio": "non_disponibile",
+      "stato_verifica": "verifica_fisica_richiesta",
+      "componenti": [
+        {"componente":"Bottiglia","materiale":"Vetro (verde)","codice_candidato":"GL 71","stato":"da_verificare_su_imballaggio_fisico"},
+        {"componente":"Tappo","materiale":"Sughero","codice_candidato":"FOR 51","stato":"da_verificare_su_imballaggio_fisico"},
+        {"componente":"Gabbietta (muselet)","materiale":"Acciaio","codice_candidato":"FE 40","stato":"da_verificare_su_imballaggio_fisico"},
+        {"componente":"Piastrina sotto la gabbietta","materiale":"Metallo (da verificare)","codice_candidato":"FE 40 / ALU 41","stato":"da_verificare_su_imballaggio_fisico"},
+        {"componente":"Capsula copritappo","materiale":"Alluminio o accoppiato","codice_candidato":"ALU 41 / C/ALU (da verificare)","stato":"da_verificare_su_imballaggio_fisico"},
+        {"componente":"Etichetta","materiale":"Carta","codice_candidato":"PAP 22","stato":"da_verificare_su_imballaggio_fisico"}
+      ]
+    }
+  ]
+}
